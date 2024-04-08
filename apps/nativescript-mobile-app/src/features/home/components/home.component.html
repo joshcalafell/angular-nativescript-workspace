@@ -1,9 +1,46 @@
 <ActionBar title="My App" class="action-bar" flat="true"> </ActionBar>
 <StackLayout class="p-20">
-  <Label text="Enjoy" class="h1 text-center c-white"></Label>
+  <Label text="NG / NativeScript POC" class="h1 text-center c-white"></Label>
   <Image
     src="~/assets/images/nx-nativescript.png"
     class="h-center m-t-20"
     width="300"
   ></Image>
+
+  <Label text="User Details:" class="description mt-20 h1 text-center c-white">
+  </Label>
+
+  <Label
+    text="Name: {{ user.name }}"
+    class="description m-t-20 h2 text-center c-white"
+  >
+  </Label>
+  <Label
+    text="Email: {{ user.email }}"
+    class="description m-t-20 h2 text-center c-white"
+  >
+  </Label>
+  <Label
+    text="Role: {{ user.role | titlecase }} "
+    class="description m-t-20 h2 text-center c-white"
+  >
+  </Label>
+
+  <Button
+    text="Tap to navigate"
+    (tap)="onTap()"
+    class="btn btn-primary btn-active m-t-20"
+  ></Button>
+
+  <Label
+    [text]="'Made with Nx'"
+    href="https://nx.dev"
+    class="description m-t-20 h2 text-center c-white"
+  >
+  </Label>
+  <Label
+    text="Instructions for reproduction found here"
+    href="https://medium.com/@owenthcarey/code-sharing-with-angular-nativescript-and-nx-beebe7c04df9"
+    class="description m-t-20 h2 text-center c-white"
+  ></Label>
 </StackLayout>

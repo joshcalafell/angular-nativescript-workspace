@@ -18,5 +18,12 @@
       "@angular-nativescript-workspace/shared": ["libs/shared/src/index.ts"]
     }
   },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    // ...
+    "disableTypeScriptVersionCheck": true,
+    "strictTemplates": true
+  },
   "exclude": ["node_modules", "tmp"]
 }

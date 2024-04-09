@@ -2,6 +2,14 @@
 import { Component, OnInit } from '@angular/core'
 import { setStatusBarColor } from '../../../utils'
 import { User } from '@angular-nativescript-workspace/shared'
+import {
+  Observable,
+  Page,
+  PropertyChangeData,
+  Slider,
+  StackLayout,
+  Switch,
+} from '@nativescript/core'
 @Component({
   moduleId: module.id,
   selector: 'app-home',
@@ -9,9 +17,11 @@ import { User } from '@angular-nativescript-workspace/shared'
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  user
-
+  user: User
   loading = false
+
+  public checkStatus = false
+  public switchStat = 'not checked'
 
   ngOnInit() {
     setStatusBarColor('dark', '#97d9e9')
@@ -19,11 +29,36 @@ export class HomeComponent implements OnInit {
 
   onTap() {
     this.loading = !this.loading
-    this.user = new User(
-      1,
-      'Josh Calafell',
-      'joshcalafell@gmail.com',
-      'Customer',
-    )
+  }
+
+  public onChange(value) {
+    console.log('switch ' + value)
+    if (value) {
+      this.switchStat = 'checked'
+    } else {
+      this.switchStat = 'not checked'
+    }
+  }
+
+  onCheckedChange(): void {
+    /* const obj = args.object as Switch
+
+    const { oldValue, propertyName, value } = args */
+
+    this.loading = !this.loading
+    /* alert(
+      'Context: ' +
+        obj.toString() +
+        '\n\n' +
+        'Value: ' +
+        value +
+        ' \n\n' +
+        'Old Value: ' +
+        oldValue +
+        '\n\n' +
+        'Property Name: ' +
+        propertyName,
+    ) */
+    alert('Toggled' + sw._getValue.toString())
   }
 }

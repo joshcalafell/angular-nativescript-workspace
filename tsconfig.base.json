@@ -15,13 +15,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@angular-nativescript-workspace/my-plugin": [
+        "libs/my-plugin/src/index.ts"
+      ],
       "@angular-nativescript-workspace/shared": ["libs/shared/src/index.ts"]
     }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
-    // ...
     "disableTypeScriptVersionCheck": true,
     "strictTemplates": true
   },

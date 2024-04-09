@@ -1,58 +1,70 @@
-<ActionBar title="NG/NativScript POC" class="action-bar" flat="true">
+<ActionBar title="NativeScript Mobile App" class="action-bar" flat="true">
 </ActionBar>
 
-<StackLayout class="p-20">
-  <Label text="NG / NativeScript POC" class="h1 text-center c-white"></Label>
+<StackLayout class="p-10 m-t-20">
+  <Label text="Angular NativScript POC" class="h1 text-center c-white"></Label>
   <Image
     src="https://imgur.com/pBrnaL7.jpg"
-    class="h-center m-t-20"
-    height="300"
+    class="h-center"
+    height="250"
   ></Image>
 
-  <ActivityIndicator [busy]="loading" class="c-white m-b-10" />
-
-  <Label
-    *ngIf="user"
-    text="Name: {{ user.name }}"
-    class="description m-t-0 h2 text-center c-white"
-  >
-  </Label>
-  <Label
-    *ngIf="user"
-    text="Email: {{ user.email }}"
-    class="description m-t-20 h2 text-center c-white"
-  >
-  </Label>
-  <Label
-    *ngIf="user"
-    text="Role: {{ user.role | titlecase }} "
-    class="description m-t-20 m-b-10 h2 text-center c-white"
-  >
-  </Label>
+  <ActivityIndicator
+    [busy]="loading"
+    class="c-white m-b-10"
+  ></ActivityIndicator>
 
   <Button
     [text]="loading ? 'Stop Loading' : 'Tap to Load User'"
     (tap)="onTap()"
-    class="btn btn-primary btn-active m-t-20"
+    class="btn btn-primary btn-active p-10"
   ></Button>
 
-  <StackLayout class="p-20 p-b-0">
+  <StackLayout class="p-10 p-b-0 p-l-20">
+    <Label [text]="switchStat | titlecase" class="title c-white"></Label>
+
     <Switch
+      #sw
       class="w-50"
-      checked="true"
+      [checked]="checkStatus"
+      (checkedChange)="onChange(sw.checked)"
       color="#BFCDAC"
       backgroundColor="#9933ff"
       offBackgroundColor="#f9737f"
-    />
+    ></Switch>
   </StackLayout>
 
-  <StackLayout class="p-20">
-    <Slider class="m-t-0" value="77" minValue="0" maxValue="100" />
-    <br />
-    <Slider class="m-t-10" value="33" minValue="0" maxValue="100" />
-    <br />
-    <Slider class="m-t-10" value="66" minValue="0" maxValue="100" />
-    <br />
-    <Slider class="m-t-10" value="100" minValue="0" maxValue="100" />
+  <StackLayout class="p-10">
+    <Slider
+      label="Red"
+      class="m-t-0"
+      value="77"
+      minValue="0"
+      maxValue="255"
+    ></Slider>
+
+    <Slider
+      label="Green"
+      class="m-t-10"
+      value="33"
+      minValue="0"
+      maxValue="255"
+    ></Slider>
+
+    <Slider
+      label="Blue"
+      class="m-t-10"
+      value="66"
+      minValue="0"
+      maxValue="255"
+    ></Slider>
+
+    <Slider
+      label="Opacity"
+      class="m-t-10"
+      value="100"
+      minValue="0"
+      maxValue="255"
+    ></Slider>
   </StackLayout>
 </StackLayout>

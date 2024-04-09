@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core'
 import { setStatusBarColor } from '../../../utils'
-import { User, MyColor } from '@angular-nativescript-workspace/shared'
+import { User, RGBAColor } from '@angular-nativescript-workspace/shared'
 
 @Component({
   moduleId: module.id,
@@ -10,7 +10,7 @@ import { User, MyColor } from '@angular-nativescript-workspace/shared'
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  myColor: MyColor
+  RGBAColor: RGBAColor
 
   user: User
   loading = false
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     setStatusBarColor('dark', '#fae13acf')
-    this.myColor = new MyColor(255 / 2, 255 / 2, 255 / 2, 1000 / 2)
+    this.RGBAColor = new RGBAColor(255 / 2, 255 / 2, 255 / 2, 1000 / 2)
   }
 
   public onButtonTap(): void {
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
 
   onSliderValueChanged(color: string, value: number): void {
     console.log(color, value)
-    this.myColor.setColor(color, value)
+    this.RGBAColor.setColor(color, value)
   }
 
   /* 

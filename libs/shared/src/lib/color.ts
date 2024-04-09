@@ -1,8 +1,9 @@
-export class MyColor {
+export class RGBAColor {
   red: number // 0-255
   green: number // 0-255
   blue: number // 0-255
   opacity: number // 0-1
+
   constructor(red = 0, green = 0, blue = 0, opacity = 0) {
     this.red = red
     this.green = green
@@ -13,16 +14,17 @@ export class MyColor {
   setColor(colorName: string, value: number) {
     switch (colorName) {
       case 'red':
-        this.red = Number(value)
+        this.red = Number(value.toFixed(0))
+        // .toFixed(0) is used b/c iOS return a long precision floating decimal, where Android send an integer, so other solutions welcome...
         break
       case 'green':
-        this.green = Number(value)
+        this.green = Number(value.toFixed(0))
         break
       case 'blue':
-        this.blue = Number(value)
+        this.blue = Number(value.toFixed(0))
         break
       case 'opacity':
-        this.opacity = Number(value)
+        this.opacity = Number(value.toFixed(0))
         break
     }
   }

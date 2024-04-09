@@ -35,15 +35,15 @@
     ></Switch>
   </StackLayout>
 
-  <StackLayout class="p-10" *ngIf="myColor">
+  <StackLayout class="p-10" *ngIf="RGBAColor">
     <StackLayout
       class="p-10 p-y-10 p-b-10 m-10"
       [ngStyle]="{
-        backgroundColor: myColor.color,
+        backgroundColor: RGBAColor.color,
       }"
     >
       <Label
-        [text]="'Color ' + myColor.color"
+        [text]="'Color ' + RGBAColor.color"
         class="bold title c-white m-5"
       ></Label>
     </StackLayout>
@@ -51,7 +51,7 @@
       #red
       label="Red"
       class="m-t-10 red"
-      [value]="myColor.red"
+      [value]="RGBAColor.red"
       minValue="0"
       maxValue="255"
       (valueChange)="onSliderValueChanged('red', red['value'])"
@@ -61,7 +61,7 @@
       #green
       label="Green"
       class="m-t-10 green"
-      [value]="myColor.green"
+      [value]="RGBAColor.green"
       minValue="0"
       maxValue="255"
       (valueChange)="onSliderValueChanged('green', green['value'])"
@@ -71,7 +71,7 @@
       #blue
       label="Blue"
       class="m-t-10 blue"
-      [value]="myColor.blue"
+      [value]="RGBAColor.blue"
       minValue="0"
       maxValue="255"
       (valueChange)="onSliderValueChanged('blue', blue['value'])"
@@ -81,7 +81,7 @@
       #opacity
       label="Opacity"
       class="m-t-10"
-      [value]="myColor.opacity"
+      [value]="RGBAColor.opacity"
       minValue="0"
       maxValue="1000"
       (valueChange)="onSliderValueChanged('opacity', opacity['value'])"

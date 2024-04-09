@@ -1,46 +1,58 @@
-<ActionBar title="My App" class="action-bar" flat="true"> </ActionBar>
+<ActionBar title="NG/NativScript POC" class="action-bar" flat="true">
+</ActionBar>
+
 <StackLayout class="p-20">
   <Label text="NG / NativeScript POC" class="h1 text-center c-white"></Label>
   <Image
-    src="~/assets/images/nx-nativescript.png"
+    src="https://imgur.com/pBrnaL7.jpg"
     class="h-center m-t-20"
-    width="300"
+    height="300"
   ></Image>
 
-  <Label text="User Details:" class="description mt-20 h1 text-center c-white">
-  </Label>
+  <ActivityIndicator [busy]="loading" class="c-white m-b-10" />
 
   <Label
+    *ngIf="user"
     text="Name: {{ user.name }}"
-    class="description m-t-20 h2 text-center c-white"
+    class="description m-t-0 h2 text-center c-white"
   >
   </Label>
   <Label
+    *ngIf="user"
     text="Email: {{ user.email }}"
     class="description m-t-20 h2 text-center c-white"
   >
   </Label>
   <Label
+    *ngIf="user"
     text="Role: {{ user.role | titlecase }} "
-    class="description m-t-20 h2 text-center c-white"
+    class="description m-t-20 m-b-10 h2 text-center c-white"
   >
   </Label>
 
   <Button
-    text="Tap to navigate"
+    [text]="loading ? 'Stop Loading' : 'Tap to Load User'"
     (tap)="onTap()"
     class="btn btn-primary btn-active m-t-20"
   ></Button>
 
-  <Label
-    [text]="'Made with Nx'"
-    href="https://nx.dev"
-    class="description m-t-20 h2 text-center c-white"
-  >
-  </Label>
-  <Label
-    text="Instructions for reproduction found here"
-    href="https://medium.com/@owenthcarey/code-sharing-with-angular-nativescript-and-nx-beebe7c04df9"
-    class="description m-t-20 h2 text-center c-white"
-  ></Label>
+  <StackLayout class="p-20 p-b-0">
+    <Switch
+      class="w-50"
+      checked="true"
+      color="#BFCDAC"
+      backgroundColor="#9933ff"
+      offBackgroundColor="#DC493D"
+    />
+  </StackLayout>
+
+  <StackLayout class="p-20">
+    <Slider class="m-t-0" value="77" minValue="0" maxValue="100" />
+    <br />
+    <Slider class="m-t-10" value="33" minValue="0" maxValue="100" />
+    <br />
+    <Slider class="m-t-10" value="66" minValue="0" maxValue="100" />
+    <br />
+    <Slider class="m-t-10" value="100" minValue="0" maxValue="100" />
+  </StackLayout>
 </StackLayout>

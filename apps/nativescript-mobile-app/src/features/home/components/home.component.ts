@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
       1,
       'Josh Calafell',
       'joshcalafell@gmail.com',
-      'consumer',
+      'Customer',
     )
   }
 }

@@ -1,15 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core'
 import { setStatusBarColor } from '../../../utils'
-import { User } from '@angular-nativescript-workspace/shared'
-import {
-  Observable,
-  Page,
-  PropertyChangeData,
-  Slider,
-  StackLayout,
-  Switch,
-} from '@nativescript/core'
+import { User, MyColor } from '@angular-nativescript-workspace/shared'
+
 @Component({
   moduleId: module.id,
   selector: 'app-home',
@@ -17,21 +10,24 @@ import {
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  myColor: MyColor
+
   user: User
   loading = false
 
   public checkStatus = false
   public switchStat = 'not checked'
 
-  ngOnInit() {
-    setStatusBarColor('dark', '#97d9e9')
+  ngOnInit(): void {
+    setStatusBarColor('dark', '#fae13acf')
+    this.myColor = new MyColor(255 / 2, 255 / 2, 255 / 2, 1000 / 2)
   }
 
-  onTap() {
+  public onButtonTap(): void {
     this.loading = !this.loading
   }
 
-  public onChange(value) {
+  public onCheckedChange(value: boolean): void {
     console.log('switch ' + value)
     if (value) {
       this.switchStat = 'checked'
@@ -40,13 +36,19 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  onCheckedChange(): void {
-    /* const obj = args.object as Switch
+  onSliderValueChanged(color: string, value: number): void {
+    console.log(color, value)
+    this.myColor.setColor(color, value)
+  }
 
-    const { oldValue, propertyName, value } = args */
+  /* 
+  onCheckedChange(): void {
+    const obj = args.object as Switch
+
+    const { oldValue, propertyName, value } = args
 
     this.loading = !this.loading
-    /* alert(
+    alert(
       'Context: ' +
         obj.toString() +
         '\n\n' +
@@ -58,7 +60,7 @@ export class HomeComponent implements OnInit {
         '\n\n' +
         'Property Name: ' +
         propertyName,
-    ) */
+    ) 
     alert('Toggled' + sw._getValue.toString())
-  }
+  }*/
 }

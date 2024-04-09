@@ -1,12 +1,13 @@
 <ActionBar title="NativeScript Mobile App" class="action-bar" flat="true">
 </ActionBar>
 
-<StackLayout class="p-10 m-t-20">
+<StackLayout class="p-t-10 p-x-10 m-t-20">
   <Label text="Angular NativScript POC" class="h1 text-center c-white"></Label>
   <Image
     src="https://imgur.com/pBrnaL7.jpg"
     class="h-center"
-    height="250"
+    height="200"
+    width="300"
   ></Image>
 
   <ActivityIndicator
@@ -15,9 +16,9 @@
   ></ActivityIndicator>
 
   <Button
-    [text]="loading ? 'Stop Loading' : 'Tap to Load User'"
-    (tap)="onTap()"
-    class="btn btn-primary btn-active p-10"
+    [text]="loading ? 'Stop Loading' : 'Tap to Load'"
+    (tap)="onButtonTap()"
+    class="btn btn-primary p-10"
   ></Button>
 
   <StackLayout class="p-10 p-b-0 p-l-20">
@@ -25,46 +26,65 @@
 
     <Switch
       #sw
-      class="w-50"
+      class="w-100"
       [checked]="checkStatus"
-      (checkedChange)="onChange(sw.checked)"
+      (checkedChange)="onCheckedChange(sw['checked'])"
       color="#BFCDAC"
       backgroundColor="#9933ff"
       offBackgroundColor="#f9737f"
     ></Switch>
   </StackLayout>
 
-  <StackLayout class="p-10">
+  <StackLayout class="p-10" *ngIf="myColor">
+    <StackLayout
+      class="p-10 p-y-10 p-b-10 m-10"
+      [ngStyle]="{
+        backgroundColor: myColor.color,
+      }"
+    >
+      <Label
+        [text]="'Color ' + myColor.color"
+        class="bold title c-white m-5"
+      ></Label>
+    </StackLayout>
     <Slider
+      #red
       label="Red"
-      class="m-t-0"
-      value="77"
+      class="m-t-10 red"
+      [value]="myColor.red"
       minValue="0"
       maxValue="255"
+      (valueChange)="onSliderValueChanged('red', red['value'])"
     ></Slider>
 
     <Slider
+      #green
       label="Green"
-      class="m-t-10"
-      value="33"
+      class="m-t-10 green"
+      [value]="myColor.green"
       minValue="0"
       maxValue="255"
+      (valueChange)="onSliderValueChanged('green', green['value'])"
     ></Slider>
 
     <Slider
+      #blue
       label="Blue"
-      class="m-t-10"
-      value="66"
+      class="m-t-10 blue"
+      [value]="myColor.blue"
       minValue="0"
       maxValue="255"
+      (valueChange)="onSliderValueChanged('blue', blue['value'])"
     ></Slider>
 
     <Slider
+      #opacity
       label="Opacity"
       class="m-t-10"
-      value="100"
+      [value]="myColor.opacity"
       minValue="0"
-      maxValue="255"
+      maxValue="1000"
+      (valueChange)="onSliderValueChanged('opacity', opacity['value'])"
     ></Slider>
   </StackLayout>
 </StackLayout>

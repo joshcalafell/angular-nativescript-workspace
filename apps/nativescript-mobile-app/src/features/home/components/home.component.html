@@ -18,10 +18,10 @@
   <Button
     [text]="loading ? 'Stop Loading' : 'Tap to Load'"
     (tap)="onButtonTap()"
-    class="btn btn-primary p-10"
+    class="btn-primary p-10"
   ></Button>
 
-  <StackLayout class="p-10 p-b-0 p-l-20">
+  <StackLayout class="p-10 p-t-10 p-l-20">
     <Label [text]="switchStat | titlecase" class="title c-white"></Label>
 
     <Switch
@@ -32,10 +32,10 @@
       color="#BFCDAC"
       backgroundColor="#9933ff"
       offBackgroundColor="#f9737f"
-    ></Switch>
-  </StackLayout>
+    ></Switch
+  ></StackLayout>
 
-  <StackLayout class="p-10" *ngIf="RGBAColor">
+  <StackLayout class="p-10 m-t-20" *ngIf="RGBAColor">
     <StackLayout
       class="p-10 p-y-10 p-b-10 m-10"
       [ngStyle]="{
@@ -50,7 +50,7 @@
     <Slider
       #red
       label="Red"
-      class="m-t-10 red"
+      class="m-t-30 red"
       [value]="RGBAColor.red"
       minValue="0"
       maxValue="255"

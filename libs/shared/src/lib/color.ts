@@ -14,17 +14,17 @@ export class RGBAColor {
   setColor(colorName: string, value: number) {
     switch (colorName) {
       case 'red':
-        this.red = Number(value.toFixed(0))
+        this.red = Math.round(Number(value.toFixed(0)))
         // .toFixed(0) is used b/c iOS return a long precision floating decimal, where Android send an integer, so other solutions welcome...
         break
       case 'green':
-        this.green = Number(value.toFixed(0))
+        this.green = Math.round(Number(value.toFixed(0)))
         break
       case 'blue':
-        this.blue = Number(value.toFixed(0))
+        this.blue = Math.round(Number(value.toFixed(0)))
         break
       case 'opacity':
-        this.opacity = Number(value.toFixed(0))
+        this.opacity = Math.round(Number(value.toFixed(0)))
         break
     }
   }
@@ -37,11 +37,5 @@ export class RGBAColor {
     return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + o + ')'
   }
 
-  get colorOpposite(): string {
-    const r = Number(this.red + (122.5 % 255))
-    const g = Number(this.green + (122.5 % 255))
-    const b = Number(this.blue + (122.5 % 255))
-    const o = this.opacity / 1000 // Taking into account of slider tick numbers.
-    return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + o + ')'
-  }
+
 }

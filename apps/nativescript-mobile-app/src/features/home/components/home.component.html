@@ -1,49 +1,32 @@
 <ActionBar title="NativeScript Mobile App" class="action-bar" flat="true">
 </ActionBar>
 
-<StackLayout class="p-t-10 p-x-10 m-t-20">
+<StackLayout class=" p-x-10 ">
   <Label text="Angular NativScript POC" class="h1 text-center c-white"></Label>
   <Image
     src="https://imgur.com/pBrnaL7.jpg"
     class="h-center"
-    height="200"
-    width="300"
+    height="150"
+   
   ></Image>
 
-  <ActivityIndicator
-    [busy]="loading"
-    class="c-white m-b-10"
-  ></ActivityIndicator>
-
   <Button
-    [text]="loading ? 'Stop Loading' : 'Tap to Load'"
+    [text]="'Tap to Load'"
     (tap)="onButtonTap()"
-    class="btn-primary p-10"
+    class="btn-primary p-x-10"
   ></Button>
 
-  <StackLayout class="p-10 p-t-10 p-l-20">
-    <Label [text]="switchStat | titlecase" class="title c-white"></Label>
+  
 
-    <Switch
-      #sw
-      class="w-100"
-      [checked]="checkStatus"
-      (checkedChange)="onCheckedChange(sw['checked'])"
-      color="#BFCDAC"
-      backgroundColor="#9933ff"
-      offBackgroundColor="#f9737f"
-    ></Switch
-  ></StackLayout>
-
-  <StackLayout class="p-10 m-t-20" *ngIf="RGBAColor">
+  <StackLayout class="p-10 m-t-5" *ngIf="rgbaColor.color">
     <StackLayout
       class="p-10 p-y-10 p-b-10 m-10"
       [ngStyle]="{
-        backgroundColor: RGBAColor.color,
+        backgroundColor: rgbaColor.color,
       }"
     >
       <Label
-        [text]="'Color ' + RGBAColor.color"
+        [text]="'Color ' + rgbaColor.color"
         class="bold title c-white m-5"
       ></Label>
     </StackLayout>
@@ -51,7 +34,7 @@
       #red
       label="Red"
       class="m-t-30 red"
-      [value]="RGBAColor.red"
+      [value]="rgbaColor.red"
       minValue="0"
       maxValue="255"
       (valueChange)="onSliderValueChanged('red', red['value'])"
@@ -61,7 +44,7 @@
       #green
       label="Green"
       class="m-t-10 green"
-      [value]="RGBAColor.green"
+      [value]="rgbaColor.green"
       minValue="0"
       maxValue="255"
       (valueChange)="onSliderValueChanged('green', green['value'])"
@@ -71,7 +54,7 @@
       #blue
       label="Blue"
       class="m-t-10 blue"
-      [value]="RGBAColor.blue"
+      [value]="rgbaColor.blue"
       minValue="0"
       maxValue="255"
       (valueChange)="onSliderValueChanged('blue', blue['value'])"
@@ -81,7 +64,7 @@
       #opacity
       label="Opacity"
       class="m-t-10"
-      [value]="RGBAColor.opacity"
+      [value]="rgbaColor.opacity"
       minValue="0"
       maxValue="1000"
       (valueChange)="onSliderValueChanged('opacity', opacity['value'])"
